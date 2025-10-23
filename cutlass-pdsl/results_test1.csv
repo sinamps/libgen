@@ -1,0 +1,17 @@
+engine,M,N,K,L,a_major,b_major,c_major,ab_dtype,c_dtype,acc_dtype,atom_layout_mnk,warmup,iters,use_cold_l2,avg_time_us,gflops,device_name,sm_major,sm_minor
+cutlass_dsl,4096,128,4096,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,160.379,26780.130964,NVIDIA GeForce RTX 3090,8,6
+cublas,4096,128,4096,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,88.287,48647.767036,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,128,8192,4096,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,162.089,52995.183968,NVIDIA GeForce RTX 3090,8,6
+cublas,128,8192,4096,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,163.369,52579.964521,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,128,4096,8192,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,317.204,27080.117899,NVIDIA GeForce RTX 3090,8,6
+cublas,128,4096,8192,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,161.688,53126.710889,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,4096,4096,4096,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,2031.677,67648.020085,NVIDIA GeForce RTX 3090,8,6
+cublas,4096,4096,4096,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,2065.500,66540.276586,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,4608,256,4096,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,141.957,68074.615455,NVIDIA GeForce RTX 3090,8,6
+cublas,4608,256,4096,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,142.961,67596.760628,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,256,8192,4608,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,312.300,61887.232230,NVIDIA GeForce RTX 3090,8,6
+cublas,256,8192,4608,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,313.275,61694.614232,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,256,4608,8192,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,278.712,69345.170930,NVIDIA GeForce RTX 3090,8,6
+cublas,256,4608,8192,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,293.274,65901.981122,NVIDIA GeForce RTX 3090,8,6
+cutlass_dsl,4608,4608,36864,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,20716.995,75566.731924,NVIDIA GeForce RTX 3090,8,6
+cublas,4608,4608,36864,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,21042.954,74396.188474,NVIDIA GeForce RTX 3090,8,6

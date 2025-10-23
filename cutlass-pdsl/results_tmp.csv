@@ -1,0 +1,3 @@
+engine,M,N,K,L,a_major,b_major,c_major,ab_dtype,c_dtype,acc_dtype,atom_layout_mnk,warmup,iters,use_cold_l2,avg_time_us,gflops,device_name,sm_major,sm_minor
+cutlass_dsl,128,4096,8192,1,m,n,n,fp16,fp16,fp32,"2,2,1",2,100,0,315.689,27210.120910,NVIDIA GeForce RTX 3090,8,6
+cublas,128,4096,8192,1,m,n,n,fp16,fp16,(FP32 accumulate),N/A,2,100,0,161.730,53112.832906,NVIDIA GeForce RTX 3090,8,6

@@ -1,0 +1,788 @@
+python compare_pdsl_cublas_pz_sweep.py       --sizes "4096,128,4096;128,8192,4096;128,4096,8192;4096,4096,4096;4608,256,4096;256,8192,4608;256,4608,8192;4608,4608,36864;3584,256,4096;256,8192,3584;256,3584,8192;3584,3584,14336;3072,256,4096;256,8192,3072;256,3072,8192;3072,3072,24576;2048,256,4096;256,8192,2048;256,2048,8192;2048,2048,16384;"       --cutlass-file ./cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py       --out results.csv
+
+
+
+
+
+
+=== Problem: M=4096 N=128 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (4096, 128, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 160.39 us  |  26778.42 GFLOPs
+[cuBLAS ] avg_time = 88.27 us  |  48659.05 GFLOPs
+
+=== Problem: M=128 N=8192 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (128, 8192, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 162.16 us  |  52971.76 GFLOPs
+[cuBLAS ] avg_time = 163.36 us  |  52582.65 GFLOPs
+
+=== Problem: M=128 N=4096 K=8192 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (128, 4096, 8192, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 317.46 us  |  27058.28 GFLOPs
+[cuBLAS ] avg_time = 161.67 us  |  53132.28 GFLOPs
+
+=== Problem: M=4096 N=4096 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (4096, 4096, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 1973.18 us  |  69653.66 GFLOPs
+[cuBLAS ] avg_time = 2001.51 us  |  68667.62 GFLOPs
+
+=== Problem: M=4608 N=256 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (4608, 256, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 142.05 us  |  68030.45 GFLOPs
+[cuBLAS ] avg_time = 143.43 us  |  67373.27 GFLOPs
+
+=== Problem: M=256 N=8192 K=4608 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 8192, 4608, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 312.40 us  |  61866.95 GFLOPs
+[cuBLAS ] avg_time = 314.49 us  |  61456.01 GFLOPs
+
+=== Problem: M=256 N=4608 K=8192 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 4608, 8192, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 278.59 us  |  69375.76 GFLOPs
+[cuBLAS ] avg_time = 317.54 us  |  60865.42 GFLOPs
+
+=== Problem: M=4608 N=4608 K=36864 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (4608, 4608, 36864, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 20673.89 us  |  75724.27 GFLOPs
+[cuBLAS ] avg_time = 21051.11 us  |  74367.38 GFLOPs
+
+=== Problem: M=3584 N=256 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (3584, 256, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 140.40 us  |  53533.65 GFLOPs
+[cuBLAS ] avg_time = 107.77 us  |  69740.06 GFLOPs
+
+=== Problem: M=256 N=8192 K=3584 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 8192, 3584, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 244.49 us  |  61484.60 GFLOPs
+[cuBLAS ] avg_time = 245.89 us  |  61133.82 GFLOPs
+
+=== Problem: M=256 N=3584 K=8192 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 3584, 8192, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 278.26 us  |  54022.46 GFLOPs
+[cuBLAS ] avg_time = 280.13 us  |  53663.05 GFLOPs
+
+=== Problem: M=3584 N=3584 K=14336 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (3584, 3584, 14336, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 5021.92 us  |  73337.16 GFLOPs
+[cuBLAS ] avg_time = 5142.58 us  |  71616.48 GFLOPs
+
+=== Problem: M=3072 N=256 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (3072, 256, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 140.37 us  |  45896.24 GFLOPs
+[cuBLAS ] avg_time = 106.88 us  |  60274.71 GFLOPs
+
+=== Problem: M=256 N=8192 K=3072 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 8192, 3072, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 208.71 us  |  61735.41 GFLOPs
+[cuBLAS ] avg_time = 209.50 us  |  61503.06 GFLOPs
+
+=== Problem: M=256 N=3072 K=8192 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 3072, 8192, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 275.94 us  |  46695.04 GFLOPs
+[cuBLAS ] avg_time = 194.76 us  |  66159.37 GFLOPs
+
+=== Problem: M=3072 N=3072 K=24576 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (3072, 3072, 24576, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 6827.97 us  |  67934.75 GFLOPs
+[cuBLAS ] avg_time = 6518.89 us  |  71155.79 GFLOPs
+
+=== Problem: M=2048 N=256 K=4096 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (2048, 256, 4096, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 139.87 us  |  30707.25 GFLOPs
+[cuBLAS ] avg_time = 73.45 us  |  58473.50 GFLOPs
+
+=== Problem: M=256 N=8192 K=2048 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 8192, 2048, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 141.39 us  |  60751.80 GFLOPs
+[cuBLAS ] avg_time = 141.93 us  |  60523.87 GFLOPs
+
+=== Problem: M=256 N=2048 K=8192 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (256, 2048, 8192, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 275.45 us  |  31185.57 GFLOPs
+[cuBLAS ] avg_time = 140.70 us  |  61052.46 GFLOPs
+
+=== Problem: M=2048 N=2048 K=16384 L=1 ===
+Running Ampere tensor core GEMM example:
+mnkl: (2048, 2048, 16384, 1)
+A dtype: Float16, B dtype: Float16, C dtype: Float16, Acc dtype: Float32
+Matrix majors - A: m, B: n, C: n
+Atoms layout: (2, 2, 1)
+Warmup iterations: 2
+Iterations: 100
+Skip reference checking: False
+Use cold L2: False
+Compiling kernel with cute.compile ...
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:454: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tApA.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:455: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tApA.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:459: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tBpB.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:460: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tBpB.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:480: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tApA.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:488: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k in range(tBpB.shape[2]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:500: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for k_tile in range(1, num_smem_stages - 1):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:721: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:722: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for m in range(tCpC.shape[1]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:728: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for rest_v in range(tCpC.shape[0]):
+/media/datassd/sina/cutlass-pdsl/cutlass/examples/python/CuTeDSL/ampere/tensorop_gemm.py:729: UserWarning: This loop is no longer unrolled and may cause performance regression. Use `range(..., unroll_full=True)` for full unrolling, or switch to `range_constexpr` when bounds are compile-time constants.
+  for n in range(tCpC.shape[2]):
+Executing GEMM kernel...
+Verifying results...
+Results verified successfully!
+[CUTLASS] avg_time = 2492.43 us  |  55142.45 GFLOPs
+[cuBLAS ] avg_time = 1990.67 us  |  69041.69 GFLOPs
+
+Done. Wrote: /media/datassd/sina/cutlass-pdsl/results.csv
