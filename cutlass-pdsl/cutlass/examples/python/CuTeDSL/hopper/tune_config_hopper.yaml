@@ -1,0 +1,55 @@
+# tune_config_hopper.yaml
+# Sweep configuration for Hopper WGMMA GEMM.
+
+# CTA tile shapes as MxNxK (K must be 64 on this example)
+# K=64 is a constraint of the specific Hopper example’s mainloop and data movement setup, not a generic rule.
+# Why it’s fixed at 64 here:
+# The kernel is specialized around Hopper’s WGMMA microkernel with a K “chunk” of 64. The mainloop consumes the K dimension in fixed 64-element slices per iteration.
+# The shared-memory layout and TMA descriptors (the swizzled tiles pulled into SMEM) are sized and aligned for a depth-64 tile. This alignment drives both correctness and performance.
+# Because of that specialization, the CTA tile shapes in the sweep are restricted to ...x...x64. Changing this would require regenerating the mainloop schedule, SMEM layout, and TMA descriptors—i.e., it’s not just a YAML change.
+# What this means for problem sizes:
+# The tile’s K must be 64 (as in your tile_list).
+# The overall problem K should be a multiple of 64 so the mainloop can march over K in 64-deep steps. If it isn’t, this example will typically assert or pad/skip depending on how the reference code handles tails.
+# If you want to relax this:
+# You’d need to reconfigure the mainloop specialization in dense_gemm.py for a different K tile depth and adjust the TMA/SMEM layouts accordingly. CUTLASS Hopper defaults for fp16 commonly use Ktile=64 for these reasons, so sticking with 64 is the well-tested path.
+
+tile_list:
+  - 64x64x64
+  - 128x64x64
+  - 64x128x64
+  - 128x128x64
+  - 128x256x64
+  - 256x128x64
+  - 32x32x64
+  - 64x32x64
+  - 32x64x64
+  - 128x32x64
+  - 32x128x64
+  - 256x64x64
+  - 64x256x64
+  - 32x256x64
+  - 256x32x64
+
+# Cluster shapes as MxN (product <= 4)
+cluster_list:
+  - 1x1
+  - 2x1
+  - 1x2
+  - 2x2
+
+# Memory layouts triplets for (A-major, B-major, C-major).
+# Valid letters: A: m|k, B: n|k, C: n|m
+layouts: [kkn, mkn, kmn]
+
+# Data types (kept simple for now; fp16 in/out with fp32 accumulation)
+# You can extend this sweep to fp8 later if desired.
+iters: 50
+warmup: 5
+use_cold_l2: False
+tolerance: 1e-2
+
+# Per-configuration timeout (seconds)
+timeout_sec: 300
+
+# Problems CSV (M,N,K with optional header m,n,k)
+problems_csv: problems_hopper.csv

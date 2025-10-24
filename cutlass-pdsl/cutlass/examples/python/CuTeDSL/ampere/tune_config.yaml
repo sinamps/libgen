@@ -1,0 +1,41 @@
+# tune_config.yaml
+# Default sweep configuration for CTA tiles, pipeline stages, atom layouts, and memory layouts.
+# Edit this file to change the sweep without touching code.
+
+# CTA tile shapes as MxNxK
+cta_list:
+  - 64x128x64
+  - 128x64x64
+  - 128x128x32
+  - 128x256x32
+  - 256x128x32
+  - 64x256x64
+  - 256x64x64
+  - 64x64x64
+  - 64x64x32
+  - 32x32x32
+  - 32x32x64
+  - 128x128x128
+
+# Number of pipeline stages
+stages: [3, 4, 5, 6]
+
+# Atom layout (MxNxK atoms)
+atom_layouts:
+  - 1x1x1
+  - 2x2x1
+
+# Memory layouts triplets for (A-major, B-major, C-major).
+# Valid letters: A: m|k, B: n|k, C: n|m
+layouts: [mnn, knn, mkn]
+
+# Benchmark loop settings
+iters: 50
+warmup: 5
+
+# Use cold-L2 mode (True/False)
+use_cold_l2: False
+
+# Per-configuration timeout (seconds). Any single run exceeding this will be aborted
+# and counted as a failure so the sweep continues. Can be overridden with --timeout_sec.
+timeout_sec: 300
